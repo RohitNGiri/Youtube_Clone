@@ -1,16 +1,23 @@
 import React from 'react'
 import { Stack, Box } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import VideoCard from './VideoCard'
 import ChannelCard from './ChannelCard'
 
 
-const Videos = ({videos,selectedCategory}) => {
-console.log(selectedCategory);
+
+const Videos = ({videos, direction}) => {
+
+  if(!videos?.length) return 'Loading...';
+  
+
+  
+// console.log(selectedCategory);
     // console.log(videos);
   return (
-       <Stack direction="row" flexWrap="wrap" justifyContent="start" alignItems="start" gap={2}>
-      {videos.map((item, idx) => (
+       <Stack direction={direction || "row" }flexWrap="wrap" justifyContent="start" alignItems="start" gap={2}>
+      {videos.map(( item, idx ) => (
         
           <Box key={idx}>
           {item.id.videoId && <VideoCard video={item} />}
@@ -24,4 +31,4 @@ console.log(selectedCategory);
   )
 }
 
-export default Videos
+export default Videos;
